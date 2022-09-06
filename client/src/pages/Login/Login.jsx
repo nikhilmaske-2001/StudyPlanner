@@ -28,6 +28,11 @@ function Login() {
           />
 
           <button type="submit">Login</button>
+          <div className="container register">
+            <p>
+              Don't have an account? <a href="#">Register</a>.
+            </p>
+          </div>
         </div>
       </form>
     </div>

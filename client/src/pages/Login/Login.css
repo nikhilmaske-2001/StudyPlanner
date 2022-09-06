@@ -59,6 +59,12 @@ span.psw {
   padding-top: 16px;
 }
 
+/* Set a grey background color and center the text of the "sign in" section */
+.register {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
