@@ -44,10 +44,11 @@ function Register() {
             required
           />
           <hr />
-
-          <button type="submit" className="registerbtn">
-            Register
-          </button>
+          <Link to="/sessions" style={{ color: "white" }}>
+            <button type="submit" className="registerbtn">
+              Register
+            </button>
+          </Link>
         </div>
 
         <div className="container signin">

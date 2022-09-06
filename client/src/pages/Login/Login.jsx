@@ -27,8 +27,10 @@ function Login() {
             name="psw"
             required
           />
+          <Link to="/sessions" style={{ color: "white" }}>
+            <button type="submit">Login</button>
+          </Link>
 
-          <button type="submit">Login</button>
           <div className="container register">
             <p>
               Don't have an account? <Link to="/register">Register</Link>
