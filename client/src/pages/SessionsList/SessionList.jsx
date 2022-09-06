@@ -5,9 +5,11 @@ import Session from "../components/Session/Session";
 
 function SessionList() {
   return (
-    <div>
+    <div className="container">
       <h1>Study Sessions</h1>
-      <Button size="large">Create a new Session</Button>
+      <Button size="large" className="new-session">
+        Create a new Session
+      </Button>
 
       <ul>
         {sessions.map((session) => (

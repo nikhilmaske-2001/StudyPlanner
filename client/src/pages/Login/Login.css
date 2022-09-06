@@ -1,4 +1,5 @@
 /* Bordered form */
+
 form {
   border: 3px solid #f1f1f1;
 }
@@ -30,6 +31,10 @@ button:hover {
   opacity: 0.8;
 }
 
+.container {
+  padding: 16px;
+}
+
 /* Extra style for the cancel button (red) */
 .cancelbtn {
   width: auto;
@@ -41,12 +46,6 @@ button:hover {
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
-}
-
-/* Avatar image */
-img.avatar {
-  width: 20%;
-  border-radius: 50%;
 }
 
 /* Add padding to containers */

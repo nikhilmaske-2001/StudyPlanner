@@ -3,7 +3,7 @@ import "./NewSession.css";
 
 function NewSession() {
   return (
-    <div>
+    <div className="container">
       <h1>Create a new session</h1>
       <form>
         <div className="container">
