@@ -26,11 +26,14 @@ router.get("/:id", async (req, res) => {
 
 //Get all sessions
 router.get("/", async (req, res) => {
+    const failed = true;
+
+    if (failed) return next(createError(401, "You are not authenticated"));
     try {
-        const sessions = await Session.find();
+        const sessions = await Session.findNyId("AEF");
         res.status(200).json(sessions);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 });
 

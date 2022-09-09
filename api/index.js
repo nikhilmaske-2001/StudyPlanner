@@ -26,10 +26,21 @@ mongoose.connection.on("connected", () => {
 });
 
 app.use(express.json());
-
+app.use((err, req, res, next) => {
+    const errorStatus = err.status || 500;
+    const errorMessage = err.message || "Something got wrong";
+    return res.status(500).json({
+        success: false,
+        status: errorStatus,
+        message: errorMessage,
+        stack: err.stack,
+    })
+})
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/sessions", sessionsRoute);
+
+
 
 app.listen(8000, () => {
     connect();
