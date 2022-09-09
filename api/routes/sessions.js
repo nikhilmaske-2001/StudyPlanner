@@ -1,5 +1,6 @@
 import express from "express";
 import Session from "../models/sessions.js";
+import { createError } from "../utils/error.js";
 
 const router = express.Router();
 
@@ -25,12 +26,9 @@ router.get("/:id", async (req, res) => {
 });
 
 //Get all sessions
-router.get("/", async (req, res) => {
-    const failed = true;
-
-    if (failed) return next(createError(401, "You are not authenticated"));
+router.get("/", async (req, res, next) => {
     try {
-        const sessions = await Session.findNyId("AEF");
+        const sessions = await Session.find();
         res.status(200).json(sessions);
     } catch (error) {
         next(error);
