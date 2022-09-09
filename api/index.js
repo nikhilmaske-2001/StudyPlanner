@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js";
+import sessionsRoute from "./routes/sessions.js";
+import usersRoute from "./routes/users.js";
 
 const app = express();
 dotenv.config();
@@ -21,9 +23,13 @@ mongoose.connection.on("disconnected", () => {
 
 mongoose.connection.on("connected", () => {
     console.log("MongoDB connected");
-})
+});
+
+app.use(express.json());
 
 app.use("/api/auth", authRoute);
+app.use("/api/users", usersRoute);
+app.use("/api/sessions", sessionsRoute);
 
 app.listen(8000, () => {
     connect();
