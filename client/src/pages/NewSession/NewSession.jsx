@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./NewSession.css";
+import { Link } from "react-router-dom";
 
 function NewSession() {
   const [credentials, setCredentials] = useState({
@@ -122,11 +123,11 @@ function NewSession() {
         </div>
 
         <div className="container">
-          <a href="#">
+          <Link to="/sessions">
             <button type="button" className="cancelbtn">
               Cancel
             </button>
-          </a>
+          </Link>
         </div>
       </form>
     </div>

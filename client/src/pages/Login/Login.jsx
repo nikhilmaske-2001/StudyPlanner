@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
@@ -56,7 +57,7 @@ function Login() {
 
           <div className="container register">
             <p>
-              Don't have an account? <a href="#"> Register</a>
+              Don't have an account? <Link to="/register"> Register</Link>
             </p>
           </div>
         </div>

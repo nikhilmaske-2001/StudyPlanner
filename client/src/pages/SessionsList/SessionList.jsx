@@ -3,6 +3,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import Session from "../components/Session/Session";
 import useFetch from "../../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 function SessionList() {
   const { data, loading, error } = useFetch("/sessions");
@@ -10,11 +11,11 @@ function SessionList() {
   return (
     <div className="container">
       <h1>Study Sessions</h1>
-      <a href="#">
+      <Link to="newSession">
         <Button size="large" className="new-session">
           Create a new Session
         </Button>
-      </a>
+      </Link>
       <ul>
         {loading
           ? "Loading please wait"
