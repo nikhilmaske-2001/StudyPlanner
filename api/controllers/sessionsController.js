@@ -2,6 +2,7 @@ import Session from "../models/sessions.js";
 
 
 export const createSession = async (req, res, next) => {
+    console.log("API at createSession");
     const newSession = new Session(req.body);
     try {
         const savedSession = await newSession.save();

@@ -9,6 +9,7 @@ function Register() {
   });
 
   const handleChange = (e) => {
+    console.log("Register change");
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
