@@ -28,6 +28,9 @@ const SessionSchema = new mongoose.Schema({
     studentsLimit: {
         type: Number,
         required: true
+    },
+    students: {
+        type: [String]
     }
 });
 
