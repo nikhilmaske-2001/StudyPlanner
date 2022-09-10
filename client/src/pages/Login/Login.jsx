@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
+  let navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: undefined,
     password: undefined,
@@ -19,6 +21,7 @@ function Login() {
       console.log(credentials);
       const res = await axios.post("/auth/login", credentials);
       console.log("User login");
+      navigate("/sessions");
     } catch (error) {
       console.log("error: ", error);
     }

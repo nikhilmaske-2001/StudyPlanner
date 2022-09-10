@@ -1,5 +1,4 @@
 import React from "react";
-// import { sessions } from "../../dummyData/sessionslist";
 import Button from "@mui/material/Button";
 import Session from "../components/Session/Session";
 import useFetch from "../../hooks/useFetch";
@@ -11,7 +10,7 @@ function SessionList() {
   return (
     <div className="container">
       <h1>Study Sessions</h1>
-      <Link to="newSession">
+      <Link to="/newSession">
         <Button size="large" className="new-session">
           Create a new Session
         </Button>

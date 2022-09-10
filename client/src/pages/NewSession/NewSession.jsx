@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./NewSession.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function NewSession() {
+  let navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     title: undefined,
     subject: undefined,
@@ -24,6 +26,7 @@ function NewSession() {
       console.log(credentials);
       const res = await axios.post("/sessions/", credentials);
       console.log("New Session created");
+      navigate("/sessions");
     } catch (error) {
       console.log("error: ", error);
     }

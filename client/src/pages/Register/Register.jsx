@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Register/Register.css";
 
 function Register() {
+  let navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: undefined,
     password: undefined,
@@ -19,7 +21,7 @@ function Register() {
     try {
       console.log(credentials);
       const res = await axios.post("/auth/register", credentials);
-      console.log(res);
+      navigate("/");
     } catch (error) {
       console.log("error: ", error);
     }
