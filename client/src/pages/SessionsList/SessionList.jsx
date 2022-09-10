@@ -1,14 +1,11 @@
 import React from "react";
-import { sessions } from "../../dummyData/sessionslist";
+// import { sessions } from "../../dummyData/sessionslist";
 import Button from "@mui/material/Button";
 import Session from "../components/Session/Session";
-import useFetch from "../../hooks/useFetch.js";
+import useFetch from "../../hooks/useFetch";
 
 function SessionList() {
   const { data, loading, error } = useFetch("/sessions");
-  console.log(data);
-  console.log(loading);
-  console.log(error);
 
   return (
     <div className="container">
@@ -19,9 +16,9 @@ function SessionList() {
         </Button>
       </a>
       <ul>
-        {sessions.map((session) => (
-          <Session data={session} />
-        ))}
+        {loading
+          ? "Loading please wait"
+          : data.map((session) => <Session data={session} />)}
       </ul>
     </div>
   );

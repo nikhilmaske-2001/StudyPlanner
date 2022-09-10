@@ -12,16 +12,19 @@ function Session(session) {
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {session.data.id}
+            {session.data._id}
           </Typography>
           <Typography variant="h5" component="div">
-            {session.data.name}
+            {session.data.title}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            Date: {session.data.date}
+            Date: From {session.data.startDate} to {session.data.endDate}
           </Typography>
           <Typography variant="body2">
-            Timing: {session.data.starttime} to {session.data.endtime}
+            Timing: From {session.data.startTime} to {session.data.endTime}
+          </Typography>
+          <Typography variant="body2">
+            Max limit: {session.data.studentsLimit}
           </Typography>
         </CardContent>
         <CardActions>
