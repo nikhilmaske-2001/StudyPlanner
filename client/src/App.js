@@ -7,10 +7,10 @@ import SessionList from './pages/SessionsList/SessionList';
 function App() {
   return (
     <div className="App">
-      {/* <Register /> */}
+      <Register />
       <Login />
-      {/* <SessionList /> */}
-      {/* <NewSession /> */}
+      <SessionList />
+      <NewSession />
     </div>
   );
 }
