@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./NewSession.css";
 
 function NewSession() {
@@ -63,11 +62,11 @@ function NewSession() {
         </div>
 
         <div className="container">
-          <Link to="/sessions">
+          <a href="#">
             <button type="button" className="cancelbtn">
               Cancel
             </button>
-          </Link>
+          </a>
         </div>
       </form>
     </div>

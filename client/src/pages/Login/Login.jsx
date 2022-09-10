@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
@@ -27,13 +26,11 @@ function Login() {
             name="psw"
             required
           />
-          <Link to="/sessions" style={{ color: "white" }}>
-            <button type="submit">Login</button>
-          </Link>
+          <button type="submit">Login</button>
 
           <div className="container register">
             <p>
-              Don't have an account? <Link to="/register">Register</Link>
+              Don't have an account? <a href="#"> Register</a>
             </p>
           </div>
         </div>

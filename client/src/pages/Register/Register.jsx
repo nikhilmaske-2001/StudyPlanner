@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../Register/Register.css";
 
 function Register() {
@@ -44,16 +43,16 @@ function Register() {
             required
           />
           <hr />
-          <Link to="/sessions" style={{ color: "white" }}>
+          <a href="#">
             <button type="submit" className="registerbtn">
               Register
             </button>
-          </Link>
+          </a>
         </div>
 
         <div className="container signin">
           <p>
-            Already have an account? <Link to="/login">Log In</Link>
+            Already have an account? <a href="#">Log In</a>
           </p>
         </div>
       </form>
