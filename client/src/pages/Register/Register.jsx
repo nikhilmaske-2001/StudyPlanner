@@ -1,7 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import "../Register/Register.css";
 
 function Register() {
+  const [credentials, setCredentials] = useState({
+    email: undefined,
+    password: undefined,
+  });
+
+  const handleChange = (e) => {
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      console.log(credentials);
+      const res = await axios.post("/auth/register", credentials);
+      console.log(res);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
   return (
     <div className="register-container">
       <form>
@@ -18,6 +39,7 @@ function Register() {
             placeholder="Enter Email"
             name="email"
             id="email"
+            onChange={handleChange}
             required
           />
 
@@ -27,27 +49,16 @@ function Register() {
           <input
             type="password"
             placeholder="Enter Password"
-            name="psw"
-            id="psw"
+            name="password"
+            id="password"
+            onChange={handleChange}
             required
           />
 
-          <label for="psw-repeat">
-            <b>Repeat Password</b>
-          </label>
-          <input
-            type="password"
-            placeholder="Repeat Password"
-            name="psw-repeat"
-            id="psw-repeat"
-            required
-          />
           <hr />
-          <a href="#">
-            <button type="submit" className="registerbtn">
-              Register
-            </button>
-          </a>
+          <button onClick={handleClick} type="submit" className="registerbtn">
+            Register
+          </button>
         </div>
 
         <div className="container signin">
