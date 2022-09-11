@@ -3,9 +3,12 @@ import axios from "axios";
 import "./NewSession.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 function NewSession() {
   let navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const [credentials, setCredentials] = useState({
     title: undefined,
     subject: undefined,
@@ -31,7 +34,8 @@ function NewSession() {
       console.log("error: ", error);
     }
   };
-  return (
+
+  return user ? (
     <div className="container">
       <h1>Create a new session</h1>
       <form>
@@ -133,6 +137,15 @@ function NewSession() {
           </Link>
         </div>
       </form>
+    </div>
+  ) : (
+    <div className="container">
+      Please login before creating a new session
+      <Link to="/">
+        <button type="button" className="Loginbtn">
+          Login
+        </button>
+      </Link>
     </div>
   );
 }
