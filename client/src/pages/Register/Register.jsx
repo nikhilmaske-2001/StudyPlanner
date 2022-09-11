@@ -19,7 +19,6 @@ function Register() {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      console.log(credentials);
       const res = await axios.post("/auth/register", credentials);
       navigate("/");
     } catch (error) {

@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext";
 
 function Session(session) {
+  const { user } = useContext(AuthContext);
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      const session = e.target.id;
+      const User = user._id;
+      const res = await axios.post("/sessions/joinsession", { session, User });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <CardActions></CardActions>
@@ -28,7 +44,9 @@ function Session(session) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Join session</Button>
+          <Button id={session.data._id} size="small" onClick={handleClick}>
+            Join session
+          </Button>
         </CardActions>
       </Card>
     </div>
