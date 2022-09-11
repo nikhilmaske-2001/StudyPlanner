@@ -19,6 +19,7 @@ function SessionList() {
         {loading
           ? "Loading please wait"
           : data.map((session) => <Session data={session} />)}
+        {error && <span>Error while loading</span>}
       </ul>
     </div>
   );

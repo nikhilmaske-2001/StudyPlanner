@@ -1,15 +1,18 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
 
 function Login() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: undefined,
     password: undefined,
   });
+
+  const { loading, error, dispatch } = useContext(AuthContext);
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -17,15 +20,16 @@ function Login() {
 
   const handleClick = async (e) => {
     e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
     try {
-      console.log(credentials);
       const res = await axios.post("/auth/login", credentials);
-      console.log("User login");
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       navigate("/sessions");
     } catch (error) {
-      console.log("error: ", error);
+      dispatch({ type: "LOGIN_FAILURE", payload: error.response.data });
     }
   };
+
   return (
     <div className="container">
       <h2>Login Form</h2>
@@ -54,9 +58,10 @@ function Login() {
             onChange={handleChange}
             required
           />
-          <button type="submit" onClick={handleClick}>
+          <button disabled={loading} type="submit" onClick={handleClick}>
             Login
           </button>
+          {error && <span>{error.message}</span>}
 
           <div className="container register">
             <p>
