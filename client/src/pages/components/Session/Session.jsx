@@ -19,7 +19,7 @@ function Session(session) {
       const User = user._id;
       const res = await axios.post("/sessions/checksession", { session, User });
 
-      console.log(res.data);
+      sethasJoined(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -40,8 +40,6 @@ function Session(session) {
       console.log(error);
     }
   };
-
-  console.log(hasJoined);
 
   return (
     <div>
@@ -64,8 +62,16 @@ function Session(session) {
             Max limit: {session.data.studentsLimit}
           </Typography>
         </CardContent>
-        {hasJoined.data ? (
-          "Already Joined"
+        {hasJoined ? (
+          <CardActions>
+            <Button
+              id={session.data._id}
+              size="small"
+              style={{ background: "green", color: "white" }}
+            >
+              Already Joined
+            </Button>
+          </CardActions>
         ) : (
           <CardActions>
             <Button id={session.data._id} size="small" onClick={handleClick}>

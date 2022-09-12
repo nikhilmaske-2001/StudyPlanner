@@ -45,10 +45,9 @@ export const joinsession = async (req, res, next) => {
 export const checksession = async (req, res, next) => {
     try {
         const session = await Session.findById(req.body.session);
-        const user = req.body.user;
+        const user = req.body.User;
         const students = session.students
         const checking = await students.includes(user);
-        console.log(checking);
         res.status(200).json(checking);
     } catch (error) {
         next(error);
