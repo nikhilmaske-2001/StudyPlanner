@@ -36,6 +36,7 @@ function Session(session) {
       const User = user._id;
       const res = await axios.post("/sessions/joinsession", { session, User });
       console.log(res);
+      checking();
     } catch (error) {
       console.log(error);
     }
