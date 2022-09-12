@@ -1,4 +1,12 @@
 # StudyPlanner
+Refer to Consideration [here](https://github.com/nikhilmaske-2001/StudyPlanner/blob/main/README.md#considerations)
+# Index
+   * [MVP](https://github.com/nikhilmaske-2001/StudyPlanner/blob/main/README.md#mvp-of-studyplanner)
+   * [ScreenShots of the web app](https://github.com/nikhilmaske-2001/StudyPlanner/blob/main/README.md#screenshots-of-the-web-app)
+   * [Features Supported](https://github.com/nikhilmaske-2001/StudyPlanner/blob/main/README.md#features-supported)
+   * [Technologies Used](https://github.com/nikhilmaske-2001/StudyPlanner/blob/main/README.md#technologies-used)
+   * [Tools Used](https://github.com/nikhilmaske-2001/StudyPlanner/blob/main/README.md#tools-used)
+   * [Consideration](https://github.com/nikhilmaske-2001/StudyPlanner/blob/main/README.md#considerations)
 
 # MVP of StudyPlanner
 
