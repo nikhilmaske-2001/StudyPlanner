@@ -34,9 +34,11 @@ export const joinsession = async (req, res, next) => {
     try {
         const session = await Session.findById(req.body.session);
         const user = await User.findById(req.body.User);
-        session.students.push(user.id);
-        session.save();
-        res.status(200).json(session);
+        if (!session.students.includes(user)) {
+            session.students.push(user.id);
+            session.save();
+            res.status(200).json(session);
+        }
     } catch (error) {
         next(error);
     }
