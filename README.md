@@ -30,7 +30,7 @@ Refer to Consideration [here](https://github.com/nikhilmaske-2001/StudyPlanner/b
 - [x] See a list of all study session
 - [ ] See only upcoming sessions (Skip past session)
 - [ ] Sort the sessions by date
-- [ ] Register for a session
+- [x] Register for a session
 
 # Technologies Used:
 
