@@ -11,6 +11,8 @@ import { AuthContext } from "../../../context/AuthContext";
 function Session(session) {
   const { user } = useContext(AuthContext);
   const [hasJoined, sethasJoined] = useState(false);
+  const [joinButton, setJoinButton] = useState(false);
+  const [sessionfull, setSessionfull] = useState(false);
   const [sess, setsess] = useState(session);
 
   const checking = async () => {
@@ -20,6 +22,20 @@ function Session(session) {
       const res = await axios.post("/sessions/checksession", { session, User });
 
       sethasJoined(res.data);
+      setJoinButton(!res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const sessionSize = async () => {
+    try {
+      const session = sess.data._id;
+      const res = await axios.post("/sessions/sessionsize", { session });
+
+      console.log(res);
+      setSessionfull(res.data);
+      setJoinButton(!res.data);
     } catch (error) {
       console.log(error);
     }
@@ -27,6 +43,7 @@ function Session(session) {
 
   useEffect(() => {
     checking();
+    sessionSize();
   }, []);
 
   const handleClick = async (e) => {
@@ -63,7 +80,7 @@ function Session(session) {
             Max limit: {session.data.studentsLimit}
           </Typography>
         </CardContent>
-        {hasJoined ? (
+        {hasJoined && (
           <CardActions>
             <Button
               id={session.data._id}
@@ -73,7 +90,21 @@ function Session(session) {
               Already Joined
             </Button>
           </CardActions>
-        ) : (
+        )}
+
+        {sessionfull && (
+          <CardActions>
+            <Button
+              id={session.data._id}
+              size="small"
+              style={{ background: "red", color: "white" }}
+            >
+              Session is full
+            </Button>
+          </CardActions>
+        )}
+
+        {joinButton && (
           <CardActions>
             <Button id={session.data._id} size="small" onClick={handleClick}>
               Join session

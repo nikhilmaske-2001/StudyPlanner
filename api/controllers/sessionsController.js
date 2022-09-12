@@ -49,8 +49,26 @@ export const checksession = async (req, res, next) => {
         const session = await Session.findById(req.body.session);
         const user = req.body.User;
         const students = session.students
-        const checking = await students.includes(user);
+        const checking = students.includes(user);
         res.status(200).json(checking);
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const checksessionsize = async (req, res, next) => {
+    try {
+        const session = await Session.findById(req.body.session);
+        const limit = session.studentsLimit;
+        const currentSize = session.students.length;
+        console.log(currentSize);
+        if (currentSize >= limit) {
+            const full = true;
+            res.status(200).json(full);
+        } else {
+            const full = false;
+            res.status(200).json(full);
+        }
     } catch (error) {
         next(error);
     }

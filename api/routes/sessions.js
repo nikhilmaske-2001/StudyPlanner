@@ -1,5 +1,5 @@
 import express from "express";
-import { createSession, getallSession, getaSession, joinsession, checksession } from "../controllers/sessionsController.js";
+import { createSession, getallSession, getaSession, joinsession, checksession, checksessionsize } from "../controllers/sessionsController.js";
 
 const router = express.Router();
 
@@ -17,6 +17,9 @@ router.post("/joinsession", joinsession);
 
 //check session contains user
 router.post("/checksession", checksession);
+
+//Check the size/limit of the session
+router.post("/sessionsize", checksessionsize);
 
 
 export default router;
