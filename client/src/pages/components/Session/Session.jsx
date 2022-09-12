@@ -33,7 +33,6 @@ function Session(session) {
       const session = sess.data._id;
       const res = await axios.post("/sessions/sessionsize", { session });
 
-      console.log(res);
       setSessionfull(res.data);
       setJoinButton(!res.data);
     } catch (error) {

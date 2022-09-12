@@ -5,9 +5,17 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import dayjs, { Dayjs } from "dayjs";
+import TextField from "@mui/material/TextField";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
 function NewSession() {
   let navigate = useNavigate();
+  const [startvalue, setStartValue] = useState(dayjs());
+  const [endvalue, setEndValue] = useState(dayjs());
+
   const { user } = useContext(AuthContext);
   const [credentials, setCredentials] = useState({
     title: undefined,
@@ -26,7 +34,20 @@ function NewSession() {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
+      const startmonth = startvalue.$M + 1;
+      const endmonth = endvalue.$M + 1;
+      const startdate = startvalue.$D + "/" + startmonth + "/" + startvalue.$y;
+      const enddate = endvalue.$D + "/" + endmonth + "/" + endvalue.$y;
+      const starttime = startvalue.$H + ":" + startvalue.$m;
+      const endtime = endvalue.$H + ":" + endvalue.$m;
+
+      setCredentials((prev) => ({ ...prev, startDate: startdate }));
+      setCredentials((prev) => ({ ...prev, endDate: enddate }));
+      setCredentials((prev) => ({ ...prev, startTime: starttime }));
+      setCredentials((prev) => ({ ...prev, endTime: endtime }));
+
       console.log(credentials);
+
       const res = await axios.post("/sessions/", credentials);
       console.log("New Session created");
       navigate("/sessions");
@@ -64,49 +85,41 @@ function NewSession() {
             required
           />
           <label for="startdate">
-            <b>Start date</b>
+            <b>Start date and time</b>
           </label>
-          <input
-            type="text"
-            placeholder="Enter start date"
-            name="startdate"
-            id="startDate"
-            onChange={handleChange}
-            required
-          />
+          <br></br>
+          <br></br>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateTimePicker
+              renderInput={(props) => <TextField {...props} />}
+              label="DateTimePicker"
+              value={startvalue}
+              onChange={(newValue) => {
+                setStartValue(newValue);
+                console.log(startvalue);
+              }}
+            />
+          </LocalizationProvider>
+          <br></br>
+          <br></br>
           <label for="enddata">
-            <b>End date</b>
+            <b>End date and time</b>
           </label>
-          <input
-            type="text"
-            placeholder="Enter end date"
-            name="enddate"
-            id="endDate"
-            onChange={handleChange}
-            required
-          />
-          <label for="starttime">
-            <b>Start time</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter start time"
-            name="starttime"
-            id="startTime"
-            onChange={handleChange}
-            required
-          />
-          <label for="endtime">
-            <b>End time</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter end time"
-            name="endtime"
-            id="endTime"
-            onChange={handleChange}
-            required
-          />
+          <br></br>
+          <br></br>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateTimePicker
+              renderInput={(props) => <TextField {...props} />}
+              label="DateTimePicker"
+              value={endvalue}
+              onChange={(newValue) => {
+                setEndValue(newValue);
+                console.log(endvalue);
+              }}
+            />
+          </LocalizationProvider>
+          <br></br>
+          <br></br>
           <label for="studentsLimit">
             <b>Enter students limit</b>
           </label>
