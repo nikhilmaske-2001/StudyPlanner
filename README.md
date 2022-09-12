@@ -69,17 +69,17 @@ Refer to Consideration [here](https://github.com/nikhilmaske-2001/StudyPlanner/b
 **Relations:** Every session contains a `studentsJoined` array collection which contains the users unique id. This resembles the user which is in array is a member of a session
 
 **2) Security Considersations:**
-    * Encrypted Hashed Password: After every registeration, the user password is encrypted and hashed using bcryptjs and then stored in the database. SO that any         user having Database access cannot see the original passwords directly.
-    * Use of .env: To hide the important urls/passwords/keys, they are stored in `.env` file. These file is accessed using `dotenv`.
+    1) Encrypted Hashed Password: After every registeration, the user password is encrypted and hashed using bcryptjs and then stored in the database. SO that any         user having Database access cannot see the original passwords directly.
+    2) Use of `.env`: To hide the important urls/passwords/keys, they are stored in `.env` file. These file is accessed using `dotenv`.
     
-**3) Maintainability: **
-    * Seperated frontend and backend : The frontend and backend of the project is seperated and are independent of each other. User can write new Apis or create new        UI without disturbing each other. This simplifies the maintainability of the project.
-    * Seperated Pages and components: React offers this features that makes code seperated and less clustered. Every page and components are independent of each            other.
-    * Use of context Api: Instead of passing props to its childrens and messing up something, context API is used. A hook is created using context api and all              children are wrapped under its provider. For accessing any props user can easily make use of hook.
-    * Seperated css: For every pages/components, its css file is seperated to avoid overriding of css.
+**3) Maintainability:**
+    1) Seperated frontend and backend : The frontend and backend of the project is seperated and are independent of each other. User can write new Apis or create           new UI without disturbing each other. This simplifies the maintainability of the project.
+    2) Seperated Pages and components: React offers this features that makes code seperated and less clustered. Every page and components are independent of each           other.
+    3) Use of context Api: Instead of passing props to its childrens and messing up something, context API is used. A hook is created using context api and all             children are wrapped under its provider. For accessing any props user can easily make use of hook.
+    4) Seperated css: For every pages/components, its css file is seperated to avoid overriding of css.
     
-**4) Readablitiy: **
-    * All variable names, files names are very related and understable to any new user.
+**4) Readablitiy:**
+    1) All variable names, files names are very related and understable to any new user.
  
-**5) Scalability: **
+**5) Scalability:**
     *
