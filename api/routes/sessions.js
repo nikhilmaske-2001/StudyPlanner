@@ -1,5 +1,5 @@
 import express from "express";
-import { createSession, getallSession, getaSession, joinsession } from "../controllers/sessionsController.js";
+import { createSession, getallSession, getaSession, joinsession, checksession } from "../controllers/sessionsController.js";
 
 const router = express.Router();
 
@@ -14,6 +14,9 @@ router.get("/", getallSession);
 
 //Join a session
 router.post("/joinsession", joinsession);
+
+//check session contains user
+router.post("/checksession", checksession);
 
 
 export default router;
