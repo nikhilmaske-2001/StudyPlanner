@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,6 +10,25 @@ import { AuthContext } from "../../../context/AuthContext";
 
 function Session(session) {
   const { user } = useContext(AuthContext);
+  const [hasJoined, sethasJoined] = useState(false);
+  const [sess, setsess] = useState(session);
+
+  const checking = async () => {
+    try {
+      const session = sess.data._id;
+      const User = user._id;
+      const res = await axios.post("/sessions/checksession", { session, User });
+
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    checking();
+  }, []);
+
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -21,6 +40,8 @@ function Session(session) {
       console.log(error);
     }
   };
+
+  console.log(hasJoined);
 
   return (
     <div>
@@ -43,11 +64,15 @@ function Session(session) {
             Max limit: {session.data.studentsLimit}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button id={session.data._id} size="small" onClick={handleClick}>
-            Join session
-          </Button>
-        </CardActions>
+        {hasJoined.data ? (
+          "Already Joined"
+        ) : (
+          <CardActions>
+            <Button id={session.data._id} size="small" onClick={handleClick}>
+              Join session
+            </Button>
+          </CardActions>
+        )}
       </Card>
     </div>
   );
